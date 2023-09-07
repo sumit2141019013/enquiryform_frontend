@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Contact Us</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="form-wrapper">
+            <h1>Contact Us</h1>
+            <p>Please fill out the form below in a professional manner</p>
+            <form action="backend.php" onsubmit="return validate()">
+                <label for="full_name">Full Name <span>*</span></label>
+                <input type="text" name="my_full_name" id="full_name" maxlength="50" required autofocus>
+
+                <label for="e_mail">E-mail <span>*</span></label>
+                <input type="email" name="my_e_mail" id="e_mail" maxlength="50" required>
+                <p id="ok">example@example.com</p>
+
+                <label for="pass">Password:</label>
+                <input type="password" name="pass" id="pass" required>
+
+                <label for="cpass">Confirm Password:</label>
+                <input type="password" name="cpass" id="cpass" onkeyup="check(this)">
+                <p id="ok1"></p>
+
+                <label for="message">Message <span>*</span></label>
+                <textarea name="my_message" id="message" cols="66" rows="4" maxlength="100" required></textarea>
+
+                <div class="btn">
+                    <input type="submit" value="SUBMIT">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("ok").style.color = "red";
+        var val = document.getElementById("pass");
+        var flag = 1;
+
+        function check(elem) {
+            if (elem.value.length > 0) {
+                if (elem.value !== val.value) {
+                    document.getElementById("ok1").innerText = "Confirm password does not match";
+                    flag = 0;
+                } else {
+                    document.getElementById("ok1").innerText = " ";
+                    
+                }
+            } else {
+                document.getElementById("ok1").innerText = "Confirm password is empty";
+                flag = 0;
+            }
+        }
+
+        function validate() {
+            if (flag === 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
